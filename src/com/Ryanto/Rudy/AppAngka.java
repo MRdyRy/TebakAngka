@@ -19,9 +19,10 @@ public class AppAngka extends javax.swing.JFrame {
     public AppAngka() {
         initComponents();
         txtJawab.setEnabled(false);
+        btnCek.setEnabled(false);
         setLocationRelativeTo(null);
-        em.setVisible(false);
-        tr.setVisible(false);
+//        em.setVisible(false);
+//        tr.setVisible(false);
     }
 
     /**
@@ -41,8 +42,6 @@ public class AppAngka extends javax.swing.JFrame {
         btnCek = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         labelResult = new javax.swing.JLabel();
-        em = new javax.swing.JLabel();
-        tr = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,10 +97,6 @@ public class AppAngka extends javax.swing.JFrame {
 
         labelResult.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        em.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Ryanto/Rudy/too_sad.png"))); // NOI18N
-
-        tr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Ryanto/Rudy/images.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -110,22 +105,13 @@ public class AppAngka extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(labelResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(em)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tr)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelResult, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(em, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tr, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,8 +165,8 @@ public class AppAngka extends javax.swing.JFrame {
         txtJawab.setEnabled(true);
         btnMulai.setEnabled(false);
         btnCek.setEnabled(true);
-        em.setVisible(false);
-        tr.setVisible(false);
+//        em.setVisible(false);
+//        tr.setVisible(false);
     }//GEN-LAST:event_btnMulaiActionPerformed
 
     private void btnCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekActionPerformed
@@ -189,21 +175,25 @@ public class AppAngka extends javax.swing.JFrame {
         }catch(Exception e)
         {
             JOptionPane.showMessageDialog(null, "ERROR INPUTAN HARUS ANGKA !!","ERROR BUNG !",JOptionPane.ERROR_MESSAGE);
-        }
+            
+        } 
+        
         btnMulai.setEnabled(false);
         if (jawaban == angkaSoal) {
             labelResult.setText("anda Benar Bung !!");
             btnMulai.setEnabled(true);
-            em.setVisible(false);
+            //em.setVisible(false);
             btnCek.setEnabled(false);
             txtJawab.setText("");
-            tr.setVisible(true);
+            
+            //tr.setVisible(true);
         } else {
             labelResult.setText("Anda Kurang beruntung :(");
             txtJawab.requestFocusInWindow();
+            txtJawab.setText(null);
             labelHint.setText(pesan());
-            em.setVisible(true);
-            tr.setVisible(false);
+            //em.setVisible(true);
+            //tr.setVisible(false);
         }
     }//GEN-LAST:event_btnCekActionPerformed
 
@@ -245,13 +235,11 @@ public class AppAngka extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCek;
     private javax.swing.JButton btnMulai;
-    private javax.swing.JLabel em;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labelHint;
     private javax.swing.JLabel labelResult;
-    private javax.swing.JLabel tr;
     private javax.swing.JTextField txtJawab;
     // End of variables declaration//GEN-END:variables
     int angkaSoal = 0, jawaban = 0;
@@ -274,9 +262,9 @@ public class AppAngka extends javax.swing.JFrame {
     {
         String pesana="";
             if (jawaban < angkaSoal) {
-                pesana= "Angka terlalu kecil";
+                pesana= "Angka "+jawaban+" terlalu kecil";
             } else if (jawaban > angkaSoal) {
-                pesana= "Angka Terlalu besar";
+                pesana= "Angka "+jawaban+" Terlalu besar";
             }
             return pesana;
     }
